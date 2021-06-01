@@ -1,10 +1,8 @@
 function fetchBooks() {
   // To pass the tests, don't forget to return your fetch!
-  fetch('https://anapioficeandfire.com/api/books')
+  return fetch('https://anapioficeandfire.com/api/books')
   .then(resp => resp.json())
-  .then(json => console.log(json));
-
-  return fetch();
+  .then(json => renderBooks(json));
 
 }
 
@@ -15,6 +13,14 @@ function renderBooks(books) {
     h2.innerHTML = book.name;
     main.appendChild(h2);
   });
+}
+
+function specificFetch(books) {
+  let sum = 0
+  books.forEach(book =>{
+    sum += book.numberOfPages
+  })
+  console.log(sum);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
